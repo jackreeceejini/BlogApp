@@ -51,4 +51,8 @@ class Post(db.Model):
         self._render_text = self.content.replace('\n', '<br>')
         return render_str("post.html", p = self)
 
+class BlogFront(BlogHandler):
+    def get(self):
+        posts = db.GqlQuery("select * from Post order by created desc limit 10")
+        self.render('front.html', posts = posts)
     

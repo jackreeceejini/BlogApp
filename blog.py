@@ -38,3 +38,13 @@ class MainPage(BlogHandler):
 
 ## Blog specific stuff
 
+def blog_key(name = 'default'):
+    return dp.Key.from_path('blogs', name)
+
+class Post(db.Model):
+    subject = db.StringProperty(required = True)
+    content = db.TextProperty(required = True)
+    created = db.DateTimeProperty(auto_now_add = True)
+    last_modified = db.DateTimeProperty(auto_now = True)
+
+    

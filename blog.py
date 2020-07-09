@@ -83,3 +83,13 @@ class NewPost(BlogHandler):
         else:
             error = "subject and content, please!"
             self.render("newpost.html", subject=subject, content=content, error=error)
+
+
+# App Initialization
+
+app = webapp2.WSGIApplication([('/', MainPage),
+                               ('/blog/?', BlogFront),
+                               ('/blog/([0-9]+)', PostPage),
+                               ('/blog/newpost', NewPost),
+                               ],
+                              debug=True)

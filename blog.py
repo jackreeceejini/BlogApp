@@ -29,3 +29,12 @@ class BlogHandler(webapp2.RequestHandler):
 def render_post(response, post):
     response.out.write('<b>' + post.subject + '</b><br>')
     response.out.write(post.content)
+
+
+class MainPage(BlogHandler):
+    def get(self):
+        self.write('Hello, Universe!')
+
+
+## Blog specific stuff
+
